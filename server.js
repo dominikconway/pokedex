@@ -9,13 +9,13 @@ const pokemon = require('./models/pokemon.js');
 app.use(express.urlencoded({ extended: false}))
 
 // INDEX
-app.get('/', (req, res) => {
-    res.render('index.ejs', { data: pokemon });
+app.get('/pokemon', (req, res) => {
+    res.render('index.ejs', {pokemonData: pokemon})
 })
 
 // SHOW
-app.get('/:id', (req, res) => {
-//res.render('show.ejs', { data: Pokemon[req.params.id] });
+app.get('/pokemon/:id', (req, res) => {
+res.render('show.ejs', { data: pokemon[req.params.id] });
 });
 
 app.listen(PORT, () => console.log(`express is listening on port: ${PORT}`))
