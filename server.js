@@ -1,9 +1,12 @@
 require('dotenv').config()
 
-const express = require('express');
+const express = require('express')
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const pokemon = require('./models/pokemon.js');
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 // middleware
 app.use(express.urlencoded({ extended: false}))
@@ -29,6 +32,7 @@ app.post('/pokemon', (req, res) => {
     res.redirect('/pokemon')
 })
 
+// DELETE
 app.delete('/pokemon/:id', (req, res) => {
     // grab the index from params
     const index = req.params.id

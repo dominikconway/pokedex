@@ -8,13 +8,20 @@
     <link href="/public/styles.css" rel="stylesheet" type="text/css">
     </head>
     <nav>
-        <a href="/pokemon/new">Add a new Pokemon!</a>
+        <a href="/pokemon/new">Add a new Pokemon!</a> <br>
+        
     </nav>   
 <body>
     <% for (let pokemon in pokemonData) { %>
         <div class = 'container'>
           <a href="/pokemon/<%=pokemon%>"><%= pokemonData[pokemon].name %></a>
           <img src="<%=(pokemonData[pokemon].img)%>">
+          <a href="/pokemon/edit<%= pokemonData[pokemon] %>/edit">
+            <button>Edit</button>
+            <form action="/pokemon/<%=pokemonData[pokemon]%>?_method=DELETE" method="post">
+                <input type="submit" value="DELETE">
+              </form>
+          </a>
         </div>
        <% } %>
 </body>
